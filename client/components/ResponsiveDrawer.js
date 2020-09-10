@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // const ResponsiveDrawer = ({ currentUser, currentTrip, otherUsers }) => {
-  const ResponsiveDrawer = ({ currentUser, currentTrip }) => {
+const ResponsiveDrawer = ({ currentUser, currentTrip }) => {
   const classes = useStyles();
   const theme = createMuiTheme({
     palette: {
@@ -96,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
   const [showTrips, setShowTrips] = useState(false);
   const [showPlan, setShowPlan] = useState(false);
   const [showHome, setShowHome] = useState(false);
+  // const [count, setCount] = useState(0);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -229,10 +230,14 @@ const useStyles = makeStyles((theme) => ({
       <Divider />
       <List>
         {['Chat'].map((text, index) => (
-          <ListItem button onClick={() => {
-            handleNavClick('chat');
-            setMobileOpen(false);
-          }} key={text}>
+          <ListItem
+            button
+            onClick={() => {
+              handleNavClick('chat');
+              setMobileOpen(false);
+            }}
+            key={text}
+          >
             <ListItemIcon>{index % 2 === 0 ? <ChatIcon /> : <ChatIcon />}</ListItemIcon>
             <ListItemText primary={text} />
             {/* {myInvites.length !== 0 && toggleIcon === false ? (
@@ -268,6 +273,18 @@ const useStyles = makeStyles((theme) => ({
       })
       .catch((err) => console.warn('ERRR', err));
   });
+
+  // useEffect(() => {
+  //   console.log('heyyyy');
+  //   axios.get('./newMsgs', { params: {
+  //     trip: currentTrip },
+  //   })
+  //     .then((response) => console.info(response)).catch((err) => console.log(err));
+  //   // const timer = setTimeout(() => {
+  //   //   setCount(count + 1);
+  //   // }, 2000);
+  //   // return () => clearTimeout(timer);
+  // }, [count]);
 
   useEffect(() => {
     axios
@@ -324,7 +341,11 @@ const useStyles = makeStyles((theme) => ({
             <Typography variant="h6" noWrap>
               TRVL
             </Typography>
-            <br />
+            <img
+              src={currentUser.profile_pic}
+              alt="user loaded from google login for toolbar"
+              className="toolbar-pic"
+            />
           </Toolbar>
         </AppBar>
         <nav className={classes.drawer} aria-label="mailbox folders">
@@ -385,7 +406,7 @@ const useStyles = makeStyles((theme) => ({
                 setClickedPage={setClickedPage}
               />
             ) : null}
-            {showChat ? <Chat currentUser={currentUser} /> : null}
+            {showChat ? <Chat currentUser={currentUser} currentTrip2={currentTrip} /> : null}
           </div>
         </main>
       </div>
@@ -413,14 +434,14 @@ ResponsiveDrawer.propTypes = {
     host: PropTypes.bool,
     googleId: PropTypes.string,
   }).isRequired,
-  currentTrip: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    destination: PropTypes.string,
-    start_date: PropTypes.string,
-    end_date: PropTypes.string,
-  }).isRequired,
+  // currentTrip: PropTypes.shape({
+  //   id: PropTypes.number,
+  //   name: PropTypes.string,
+  //   destination: PropTypes.string,
+  //   start_date: PropTypes.string,
+  //   end_date: PropTypes.string,
+  // }).isRequired,
+  currentTrip: PropTypes.string.isRequired,
 };
 
 export default ResponsiveDrawer;
-

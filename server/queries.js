@@ -370,8 +370,16 @@ const inviteSelectedUser = async (req) => {
     .catch((err) => console.warn(err));
 };
 
+const newMsgs = async (req, res) => {
+  const msgs = await Message.findAll({ where: { trip_id: req.trip.id } }).then((response) => {
+    console.info(response);
+  });
+  res.send(msgs);
+};
+
 module.exports = {
   createUser,
+  newMsgs,
   addDestinations,
   inviteSelectedUser,
   addPreferences,

@@ -19,7 +19,7 @@ class App extends Component {
       loginComplete: false,
       currentUser: '',
       otherUsers: [],
-      currentTrip: { id: 2 },
+      currentTrip: '',
       phone: '',
       registered: false,
     };
@@ -120,25 +120,25 @@ class App extends Component {
     }
     if (registered === false) {
       return (
-          <Typography>
-            **Link you phone number to your account** Phone Number:
-            <input
-              type="text"
-              id="phone"
-              name="phone"
-              placeholder="number"
-              value={phone}
-              onChange={(e) => this.handleChangePhone(e)}
-            />
-            <Button
-              variant="contained"
-              onClick={() => {
-                this.handleSubmitPhone();
-              }}
-            >
-              Submit Phone Number
-            </Button>
-          </Typography>
+        <Typography>
+          **Link you phone number to your account** Phone Number:
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            placeholder="number"
+            value={phone}
+            onChange={(e) => this.handleChangePhone(e)}
+          />
+          <Button
+            variant="contained"
+            onClick={() => {
+              this.handleSubmitPhone();
+            }}
+          >
+            Submit Phone Number
+          </Button>
+        </Typography>
       );
     }
     return (

@@ -14,6 +14,7 @@ const {
   createUser,
   addPreferences,
   inviteSelectedUser,
+  newMsgs,
   getPhone,
   addPhone,
   planTrip,
@@ -99,6 +100,10 @@ app.get('/phone', (req, res) => {
 
 app.get('/inviteUsers', (req, res) => {
   getAllOtherUsers(req.query, res);
+});
+
+app.get('/newMsgs', (req, res) => {
+  newMsgs(req.query, res);
 });
 
 // POST
