@@ -19,6 +19,7 @@ const PlanATrip = ({ setClickedPage, currentUser }) => {
       })
       .catch((err) => console.warn('ERRR', err));
   });
+
   return (
     <div>
       <Button
@@ -28,6 +29,7 @@ const PlanATrip = ({ setClickedPage, currentUser }) => {
             <Preferences
               currentUser={currentUser}
               otherUsers={allOtherUsers}
+              // otherUsers={otherUsers}
               setClickedPage={setClickedPage}
             />,
           );

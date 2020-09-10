@@ -51,7 +51,7 @@ const InvitesButton = ({ currentUser, otherUsers, trip, setClickedPage }) => {
         <header>Click on a user to send them a invite to this trip!</header>
         <ul>
           {otherUsers.map((user) => (
-            <button type="submit" key={user} onClick={(e) => handleClick(e, user)}>
+            <button type="submit" key={user.id} onClick={(e) => handleClick(e, user)}>
               {user.last_name}, {user.first_name}
             </button>
           ))}

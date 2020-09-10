@@ -141,7 +141,6 @@ const ContinuousSlider = ({ currentUser, otherUsers, setClickedPage }) => {
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
               disableToolbar
-              fullWidth
               variant="inline"
               format="MM/dd/yyyy"
               margin="normal"
@@ -157,7 +156,6 @@ const ContinuousSlider = ({ currentUser, otherUsers, setClickedPage }) => {
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
               disableToolbar
-              fullWidth
               variant="inline"
               format="MM/dd/yyyy"
               margin="normal"
